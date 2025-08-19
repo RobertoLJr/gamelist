@@ -1,9 +1,17 @@
 package com.robertoljr.gamelist.entity;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "game_lists")
 public class GameList {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     public GameList() {
