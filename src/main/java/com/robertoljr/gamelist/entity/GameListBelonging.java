@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "game_list_belongings")
+@Table(name = "tb_game_list_belongings")
 public class GameListBelonging {
 
     @EmbeddedId
