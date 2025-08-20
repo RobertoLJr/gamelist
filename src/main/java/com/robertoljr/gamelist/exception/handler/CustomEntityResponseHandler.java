@@ -24,7 +24,6 @@ public class CustomEntityResponseHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    // Game Exceptions
     @ExceptionHandler(ResourceNotFoundException.class)
     public final ResponseEntity<ExceptionResponse> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         return buildResponseEntity(ex, request, HttpStatus.NOT_FOUND);
