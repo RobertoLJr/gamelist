@@ -16,6 +16,11 @@ GameList is a RESTful API built with Spring Boot designed to manage and retrieve
 - RESTful API endpoints
 - Layered architecture (Controllers <- DTOs -> Services <- Entities/ORM -> Repositories)
 - Exception handling
+- H2 database for development and testing
+- Docker support*
+- Deployment readiness*
+
+\* Script for PostgreSQL/pgAdmin containers setup available in `resources/docker-compose.yml`
 
 ## Tech Stack
 
