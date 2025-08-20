@@ -38,4 +38,12 @@ public class GameServiceImpl implements GameService {
                 () -> new ResourceNotFoundException("Game not found with ID " + id)
         );
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<GameSummaryDTO> findByListId(Long id) {
+        return gameRepository.findAllByListId(id).stream()
+                .map(GameSummaryDTO::new)
+                .toList();
+    }
 }

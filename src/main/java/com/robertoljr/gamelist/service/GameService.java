@@ -9,4 +9,6 @@ public interface GameService {
     List<GameSummaryDTO> findAll();
 
     GameInfoDTO findById(Long id);
+
+    List<GameSummaryDTO> findByListId(Long id);
 }

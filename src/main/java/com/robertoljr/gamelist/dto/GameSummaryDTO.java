@@ -1,6 +1,7 @@
 package com.robertoljr.gamelist.dto;
 
 import com.robertoljr.gamelist.entity.Game;
+import com.robertoljr.gamelist.projection.GameSummaryProjection;
 
 public class GameSummaryDTO {
     private Long id;
@@ -18,6 +19,14 @@ public class GameSummaryDTO {
         year = entity.getYear();
         imgUrl = entity.getImgUrl();
         shortDescription = entity.getShortDescription();
+    }
+
+    public GameSummaryDTO(GameSummaryProjection projection) {
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
     }
 
     public Long getId() {
