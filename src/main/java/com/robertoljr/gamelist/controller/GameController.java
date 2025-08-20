@@ -17,10 +17,10 @@ import java.util.List;
 @RequestMapping(value = "/api/games")
 public class GameController {
 
-    private GameService gameService;
+    private final GameService gameService;
 
     @Autowired
-    public void setGameService(GameService gameService) {
+    public  GameController(GameService gameService) {
         this.gameService = gameService;
     }
 
