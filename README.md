@@ -1,3 +1,7 @@
+![Java](https://img.shields.io/badge/Java-17%2B-orange?style=flat-square&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0%2B-brightgreen?style=flat-square&logo=springboot)
+![Maven](https://img.shields.io/badge/Maven-3.8%2B-C71A36?style=flat-square&logo=apachemaven)
+
 # GameList 🎮
 
 A Spring Boot learning project that serves as a repository for gaming-related information including titles, descriptions, release dates, and other game metadata.
@@ -10,8 +14,8 @@ GameList is a RESTful API built with Spring Boot designed to manage and retrieve
 
 - Game information management (CRUD operations)
 - RESTful API endpoints
-- Data persistence layer
-- Game metadata storage (title, release year, genre, platform, score, cover image, short and long descriptions)
+- Layered architecture (Controllers <- DTOs -> Services <- Entities/ORM -> Repositories)
+- Exception handling
 
 ## Tech Stack
 
@@ -44,18 +48,24 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-The application will start on `http://localhost:8080`
+The application will start on `http://localhost:8080`  
+An H2 console will be available on `http://localhost:8080/h2-console`  
+The database will be created and populated with sample data (available in `src/main/resources/import.sql`).
 
 ## API Endpoints
 
 *Note: Replace with actual endpoints after reviewing the implementation*
 
+**Games**
 ```
-GET    /games          - Retrieve all games
-GET    /games/{id}     - Retrieve game by ID    [NOT YET IMPLEMENTED]
-POST   /games          - Create new game        [NOT YET IMPLEMENTED]
-PUT    /games/{id}     - Update existing game   [NOT YET IMPLEMENTED]
-DELETE /games/{id}     - Delete game            [NOT YET IMPLEMENTED]
+GET    /games           - Retrieve all games
+GET    /games/{id}      - Retrieve a game by ID
+```
+
+**GameLists**
+
+```
+GET    /game_lists/{id}/games      - Retrieve all games from a particular list
 ```
 
 ## Project Structure
@@ -69,6 +79,8 @@ src/
 │   │       ├── controller/
 │   │       ├── dto/
 │   │       ├── entity/
+│   │       ├── exception/
+│   │       ├── projection/
 │   │       ├── repository/
 │   │       └── service/
 │   └── resources/
