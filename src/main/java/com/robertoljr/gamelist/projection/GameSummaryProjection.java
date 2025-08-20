@@ -5,7 +5,7 @@ public interface GameSummaryProjection {
 
     String getTitle();
 
-    Integer getYear();
+    Integer getReleaseYear();
 
     String getImgUrl();
 
