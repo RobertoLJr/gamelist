@@ -63,14 +63,15 @@ The database will be created and populated with sample data (available in `src/m
 
 **Games**
 ```
-GET    /games           - Retrieve all games
-GET    /games/{id}      - Retrieve a game by ID
+GET     /games           - Retrieve all games
+GET     /games/{id}      - Retrieve a game by ID
 ```
 
 **GameLists**
 
 ```
-GET    /game_lists/{id}/games      - Retrieve all games from a particular list
+GET     /game_lists/{id}/games          - Retrieve all games from a particular list
+POST    /game_lists/{id}/replacement    - Move a game from a source to target position
 ```
 
 ## Project Structure

@@ -1,15 +1,13 @@
 package com.robertoljr.gamelist.controller;
 
 import com.robertoljr.gamelist.dto.GameListDTO;
+import com.robertoljr.gamelist.dto.GameReplacementDTO;
 import com.robertoljr.gamelist.dto.GameSummaryDTO;
 import com.robertoljr.gamelist.service.GameListService;
 import com.robertoljr.gamelist.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +32,11 @@ public class GameListController {
     @GetMapping(value = "/{list_id}/games")
     public ResponseEntity<List<GameSummaryDTO>> findByListId(@PathVariable Long list_id) {
         return  ResponseEntity.ok(gameService.findByListId(list_id));
+    }
+
+    @PostMapping(value = "/{list_id}/replacement")
+    public ResponseEntity<Void> moveGameInList(@PathVariable Long list_id, @RequestBody GameReplacementDTO body) {
+        gameListService.moveGameInList(list_id, body.getSourceIndex(), body.getTargetIndex());
+        return ResponseEntity.ok().build();
     }
 }
