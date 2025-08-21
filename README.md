@@ -63,8 +63,9 @@ The database will be created and populated with sample data (available in `src/m
 
 **Games**
 ```
-GET     /games           - Retrieve all games
-GET     /games/{id}      - Retrieve a game by ID
+GET     /games          - Retrieve all games
+GET     /games/{id}     - Retrieve a game by ID
+POST    /games          - Create a new game
 ```
 
 **GameLists**

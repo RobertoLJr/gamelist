@@ -1,11 +1,13 @@
 package com.robertoljr.gamelist.service;
 
+import com.robertoljr.gamelist.dto.GameCreateDTO;
 import com.robertoljr.gamelist.dto.GameInfoDTO;
 import com.robertoljr.gamelist.dto.GameSummaryDTO;
 import com.robertoljr.gamelist.entity.Game;
 import com.robertoljr.gamelist.exception.ResourceNotFoundException;
 import com.robertoljr.gamelist.projection.GameSummaryProjection;
 import com.robertoljr.gamelist.repository.GameRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,16 @@ public class GameServiceImpl implements GameService {
     @Autowired
     public GameServiceImpl(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
+    }
+
+    @Override
+    @Transactional
+    public GameInfoDTO save(GameCreateDTO dto) {
+        Game entity = new Game();
+        BeanUtils.copyProperties(dto, entity);
+
+        entity = gameRepository.save(entity);
+        return new GameInfoDTO(entity);
     }
 
     @Override
